@@ -1,3 +1,4 @@
-import { gameType } from './game';
+import { type SchemaTypeDefinition } from 'sanity';
+import { game } from './game';
 
-export const schemaTypes = [gameType];
+export const schemaTypes: SchemaTypeDefinition[] = [game];

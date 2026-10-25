@@ -1,10 +1,9 @@
 import { defineField, defineType } from 'sanity';
 
-export const gameType = defineType({
+export const game = defineType({
     name: 'game',
-    title: 'Games',
+    title: 'Game',
     type: 'document',
-
     fields: [
         defineField({
             name: 'title',
@@ -38,8 +37,15 @@ export const gameType = defineType({
         }),
 
         defineField({
-            name: 'heroImage',
-            title: 'Hero Image',
+            name: 'story',
+            title: 'story',
+            type: 'text',
+            rows: 8,
+        }),
+
+        defineField({
+            name: 'thumbnail',
+            title: 'Thumbnail',
             type: 'image',
             options: {
                 hotspot: true,
@@ -47,18 +53,21 @@ export const gameType = defineType({
         }),
 
         defineField({
-            name: 'storyline',
-            title: 'Storyline',
-            type: 'text',
-            rows: 8,
+            name: 'gameHero',
+            title: 'Game Hero',
+            type: 'image',
+            options: {
+                hotspot: true,
+            },
+        }),
+
+        defineField({
+            name: 'skills',
+            title: 'Learning Adventures',
+            description: 'Skills children develop through gameplay.',
+            type: 'array',
+            of: [{ type: 'string' }],
+            validation: (Rule) => Rule.min(1).max(5),
         }),
     ],
-
-    preview: {
-        select: {
-            title: 'title',
-            subtitle: 'tagline',
-            media: 'heroImage',
-        },
-    },
 });
