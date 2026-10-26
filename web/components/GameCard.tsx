@@ -1,29 +1,18 @@
 import Link from "next/link";
-import { urlFor } from "@/sanity/image";
-
-type CardProps = {
-    url: string;
-    label: string;
-    image?: {
-        asset?: {
-            _ref: string;
-            _type: "reference";
-        };
-        _type: "image";
-    };
-};
+import Hero from "./Hero";
 
 export default function GameCard({ game }: any) {
-    //const thumbnail = urlFor(game.thumbnail).width(2000).url();
-    console.log(game, "game");
+
     return (
-        <div className="relative mx-auto w-full max-w-sm pt-0 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
-            {/*             <img
-                src={thumbnail}
-                alt={game.title}
-                className="relative z-20 w-full object-cover"
-            /> */}
-            <div className="w-full"><Link href={game.slug}>{game.title}</Link></div>
+        <div className="w-full max-w-md mb-4 flex flex-col">
+            <Link href={game.slug}>
+                <Hero mobileImage={game.thumbnail} desktopImage={game.hero} />
+            </Link>
+            <div className="flex justify-between pt-2">
+                <h3 className="text-black text-xl inline">{game.title}</h3>
+                <Link href={game.slug} className="bg-black text-white text-sm font-bold text-right rounded-lg px-2 py-1">Play now</Link>
+            </div>
+            <p className="text-black">{game.description}</p>
         </div>
     );
 }
