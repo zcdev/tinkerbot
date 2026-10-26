@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Orbitron } from "next/font/google";
 import "./globals.css";
-import Header from '@/components/Header';
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",
@@ -22,10 +21,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${orbitron.variable} h-full antialiased`}
+      className={`${spaceGrotesk.variable} ${orbitron.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col items-center p-8 lg:p-0">
-        <Header />
+      <body className="sky-background min-h-full flex flex-col items-center">
         {children}
       </body>
     </html>
