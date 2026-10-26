@@ -53,8 +53,8 @@ export const game = defineType({
         }),
 
         defineField({
-            name: 'gameHero',
-            title: 'Game Hero',
+            name: 'hero',
+            title: 'Hero',
             type: 'image',
             options: {
                 hotspot: true,

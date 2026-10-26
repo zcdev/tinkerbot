@@ -5,7 +5,12 @@ export const gameQuery = `
     _id,
     title,
     thumbnail,
+    hero,
     "slug": slug.current,
     description,
   }
+`;
+
+export const homeQuery = `
+*[_type == "home"][0]
 `;
