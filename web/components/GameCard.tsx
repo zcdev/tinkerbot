@@ -6,7 +6,7 @@ export default function GameCard({ game, location }: any) {
     return (
         <div className="w-full mb-4 flex flex-col">
             <Link href={game.slug}>
-                <Hero mobileImage={game.thumbnail} desktopImage={game.hero} location={location} />
+                <Hero mobileImage={game.thumbnail} desktopImage={game.hero} alt={game.title} location={location} />
             </Link>
             <div className="flex justify-between pt-2">
                 <h3 className="text-black text-xl inline">{game.title}</h3>
