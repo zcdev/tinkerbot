@@ -23,7 +23,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${spaceGrotesk.variable} ${orbitron.variable} antialiased`}
     >
-      <body className="sky-background min-h-full flex flex-col items-center">
+      <body className="sky-background min-h-full flex justify-center">
         {children}
       </body>
     </html>

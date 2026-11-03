@@ -10,11 +10,11 @@ export default async function Home() {
   const games = await cachedFetch(gameQuery);
 
   return (
-    <main className="flex my-3">
-      <section className="max-w-6xl bg-black my-10 mr-10 p-6 rounded-xl h-[1189px]">
+    <main className="flex flex-col lg:flex-row p-6">
+      <section className="w-full lg:w-[1150px] bg-black lg:m-6 p-6 rounded-xl h-auto lg:h-[1189px]">
         <Header />
         <section>
-          <Hero mobileImage={home.thumbnail} desktopImage={home.hero} />
+          <Hero mobileImage={home.thumbnail} desktopImage={home.hero} location="home" />
           <h2 className="text-sky-400 text-3xl mt-8">Where Little Minds Make Big Discoveries!</h2>
           <p className="text-xl mt-4">
             At TinkerBot, we believe curiosity is the beginning of every great adventure.
@@ -27,11 +27,11 @@ export default async function Home() {
           </p>
         </section>
       </section>
-      <section className="mt-10 h-[1189px] overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <aside className="w-full lg:max-w-[440px] h-auto lg:h-[1189px] overflow-none lg:overflow-y-auto lg:[scrollbar-width:none] lg:[&::-webkit-scrollbar]:hidden lg:m-6 mt-6">
         {games.map((game: any) => (
-          <GameCard key={game._id} game={game} />
+          <GameCard key={game._id} game={game} location="home" />
         ))}
-      </section>
+      </aside>
     </main>
   );
 }

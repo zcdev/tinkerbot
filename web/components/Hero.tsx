@@ -10,23 +10,34 @@ export default function Hero({ mobileImage, desktopImage, location }: any) {
 
     return (
         <>
-            <Image
-                src={urlFor(mobileImage).width(600).auto("format").url()}
-                width={mobileWidth}
-                height={mobileHeight}
-                alt="TinkerBot Homepage Hero"
-                sizes="100%"
-                className="md:hidden"
-            />
+            {location === "home" ? (
+                <Image
+                    src={urlFor(desktopImage).auto("format").url()}
+                    width={desktopWidth}
+                    height={desktopHeight}
+                    alt="TinkerBot Homepage Hero"
+                    className="hero rounded-xl"
+                    loading="eager"
+                />
+            ) : (
+                <>
+                    <Image
+                        src={urlFor(mobileImage).auto("format").url()}
+                        width={mobileWidth}
+                        height={mobileHeight}
+                        alt="TinkerBot Homepage Hero"
+                        className="hero md:hidden rounded-xl"
+                    />
 
-            <Image
-                src={urlFor(desktopImage).width(1200).auto("format").url()}
-                width={desktopWidth}
-                height={desktopHeight}
-                alt="TinkerBot Homepage Hero"
-                sizes="(max-width: 1200px) 100vw, 1200px"
-                className="hidden md:block rounded-xl"
-            />
+                    <Image
+                        src={urlFor(desktopImage).auto("format").url()}
+                        width={desktopWidth}
+                        height={desktopHeight}
+                        alt="TinkerBot Homepage Hero"
+                        className="hero hidden md:block rounded-xl"
+                    />
+                </>
+            )}
         </>
     );
 }
