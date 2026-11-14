@@ -2,6 +2,8 @@ import { gameQuery } from '@/sanity/queries';
 import { cachedFetch } from '@/sanity/util';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import PillList from '@/components/PillList';
+import { PortableText } from '@portabletext/react';
 export const instant = false;
 
 type Props = {
@@ -13,26 +15,55 @@ type Props = {
 export default async function Game({ params }: Props) {
     const { slug } = await params;
     const games = await cachedFetch(gameQuery, { slug });
-    const game = games[0];
+    const game = games.find((game: any) => game.slug === slug);
+
+    const components = {
+        block: {
+            normal: ({ children }: any) => (
+                <p className="text-lg text-white mb-6">
+                    {children}
+                </p>
+            ),
+            h2: ({ children }: any) => (
+                <h2 className="mb-4 mt-8 text-2xl font-bold">
+                    {children}
+                </h2>
+            ),
+            h3: ({ children }: any) => (
+                <h3 className="mb-3 mt-6 text-xl font-semibold">
+                    {children}
+                </h3>
+            ),
+        },
+    };
+
+    const GameStory = ({ value }: any) => {
+        return <PortableText value={value} components={components} />;
+    };
 
     return (
         <main className="flex flex-col lg:flex-row pt-6">
-            <div className="w-full lg:w-[1150px] bg-black p-6 rounded-xl h-auto lg:h-[1189px] mb-6 lg:mb-0 lg:mr-12">
+            <div className="w-full w-[1632px] bg-black p-6 rounded-xl h-auto mb-6 lg:mb-0">
                 <Header />
                 <section>
-                    <Hero mobileImage={game.thumbnail} desktopImage={game.hero} location="home" />
-                    <h2 className="text-sky-400 text-3xl mt-8">Where Little Minds Make Big Discoveries!</h2>
-                    <p className="text-xl mt-4">
-                        At TinkerBot, we believe curiosity is the beginning of every great adventure.
-                    </p>
-                    <p className="text-xl mt-4">
-                        We create imaginative educational games that turn everyday learning into playful discoveries. From solving curious puzzles and exploring distant planets to running a bustling bakery, every adventure invites young minds to think creatively, solve problems, and discover something new.
-                    </p>
-                    <p className="text-xl mt-4">
-                        Because learning is more fun when you're playing!
-                    </p>
+                    <aside className="flex">
+                        <div className="w-full w-[1150px]">
+                            <Hero mobileImage={game.thumbnail} desktopImage={game.hero} location="home" />
+                        </div>
+                        <div className="w-full max-w-[440px] ml-6">
+                            <h2 className="text-2xl text-sky-400 mb-6">What you'll learn:</h2>
+                            <PillList skills={game.skills} />
+                        </div>
+                    </aside>
+                    <section>
+                        <h3 className="text-sky-400 text-3xl mt-8 mb-6">{game.title}</h3>
+                        <p className="text-xl mt-4 mb-6">
+                            {game.tagline}
+                        </p>
+                        <GameStory value={game.story} />
+                    </section>
                 </section>
             </div>
-        </main>
+        </main >
     );
 }

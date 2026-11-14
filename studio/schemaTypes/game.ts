@@ -39,8 +39,8 @@ export const game = defineType({
         defineField({
             name: 'story',
             title: 'story',
-            type: 'text',
-            rows: 8,
+            type: 'array',
+            of: [{ type: 'block' }],
         }),
 
         defineField({

@@ -8,6 +8,9 @@ export const gameQuery = `
     hero,
     "slug": slug.current,
     description,
+    skills,
+    tagline,
+    story
   }
 `;
 
