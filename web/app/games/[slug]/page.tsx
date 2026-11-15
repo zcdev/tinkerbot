@@ -51,7 +51,7 @@ export default async function Game({ params }: Props) {
                             <Hero mobileImage={game.thumbnail} desktopImage={game.hero} location="home" />
                         </div>
                         <div className="w-full max-w-[440px] ml-6">
-                            <h2 className="text-2xl text-sky-400 mb-6">What you'll learn:</h2>
+                            <h2 className="text-2xl text-sky-400">What you'll learn:</h2>
                             <PillList skills={game.skills} />
                         </div>
                     </aside>
