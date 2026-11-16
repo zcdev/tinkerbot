@@ -15,8 +15,8 @@ export const gamePlayHighlight = defineType({
         defineField({
             name: 'description',
             title: 'Gameplay Highlight Description',
-            type: 'string',
-            validation: (Rule) => Rule.required(),
+            type: 'array',
+            of: [{ type: 'block' }],
         }),
 
         defineField({

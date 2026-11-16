@@ -15,8 +15,8 @@ export const gameCharacter = defineType({
         defineField({
             name: 'description',
             title: 'Character Description',
-            type: 'string',
-            validation: (Rule) => Rule.required(),
+            type: 'array',
+            of: [{ type: 'block' }],
         }),
 
         defineField({
