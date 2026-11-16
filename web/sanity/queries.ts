@@ -10,7 +10,17 @@ export const gameQuery = `
     description,
     skills,
     tagline,
-    story
+    story,
+    gameCharacters[] {
+      name,
+      description,
+      image,
+    },
+    gameplayHighlights[] {
+      title,
+      description,
+      image,
+    }
   }
 `;
 

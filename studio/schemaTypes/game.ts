@@ -69,5 +69,21 @@ export const game = defineType({
             of: [{ type: 'string' }],
             validation: (Rule) => Rule.min(1).max(5),
         }),
+
+        defineField({
+            name: 'characters',
+            title: 'Characters',
+            type: 'array',
+            of: [{ type: 'gameCharacter' }],
+            description: 'Characters featured in this game.',
+        }),
+
+        defineField({
+            name: 'gameplayHighlights',
+            title: 'Gameplay Highlights',
+            type: 'array',
+            of: [{ type: 'gameplayHighlight' }],
+            description: 'Showcase interesting gameplay mechanics and features.',
+        })
     ],
 });
