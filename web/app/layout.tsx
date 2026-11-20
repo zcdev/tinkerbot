@@ -31,7 +31,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${spaceGrotesk.variable} ${orbitron.variable} antialiased`}
     >
-      <body className="sky-background l min-h-full flex flex-col justify-center items-center p-6 lg:p-12 lg:pt-6">
+      <body className="sky-background min-h-full flex flex-col justify-center items-center p-6 lg:p-12 lg:pt-6">
         <div>
           <Nav games={games} />
           {children}
