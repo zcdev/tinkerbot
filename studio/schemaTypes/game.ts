@@ -71,8 +71,8 @@ export const game = defineType({
         }),
 
         defineField({
-            name: 'characters',
-            title: 'Characters',
+            name: 'gameCharacters',
+            title: 'Game Characters',
             type: 'array',
             of: [{ type: 'gameCharacter' }],
             description: 'Characters featured in this game.',

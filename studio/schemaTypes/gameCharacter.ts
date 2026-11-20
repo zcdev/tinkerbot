@@ -7,26 +7,26 @@ export const gameCharacter = defineType({
     fields: [
         defineField({
             name: 'name',
-            title: 'Character Name',
+            title: 'Game Character Name',
             type: 'string',
             validation: (Rule) => Rule.required(),
         }),
 
         defineField({
             name: 'description',
-            title: 'Character Description',
+            title: 'Game Character Description',
             type: 'array',
             of: [{ type: 'block' }],
         }),
 
         defineField({
             name: 'image',
-            title: 'Character Image',
+            title: 'Game Character Image',
             type: 'image',
             options: {
                 hotspot: true,
             },
             validation: (Rule) => Rule.required(),
-        }),
+        })
     ]
 });
