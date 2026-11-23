@@ -5,6 +5,7 @@ import Hero from '@/components/Hero';
 import PillList from '@/components/PillList';
 import PortableTextBlock from '@/components/PortableTextBlock';
 import CharacterCard from '@/components/CharacterCard';
+import GameplayHighlight from '@/components/GameplayHighlight';
 export const instant = false;
 
 type Props = {
@@ -46,7 +47,8 @@ export default async function Game({ params }: Props) {
                     <section className="flex flex-col w-full w-[1632px] mt-12">
                         <h4 className='text-3xl text-black mb-6'>Meet the Characters</h4>
                         <CharacterCard characters={game.gameCharacters} />
-                        <h4 className='text-3xl text-black mb-6'>Gameplay Highlights</h4>
+                        <h5 className='text-3xl text-black mb-6'>Gameplay Highlights</h5>
+                        <GameplayHighlight highlights={game.gameplayHighlights} />
                     </section>
                 </section>
             </section>
