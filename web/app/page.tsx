@@ -1,5 +1,5 @@
 import { gameQuery, homeQuery } from '@/sanity/queries';
-import { cachedFetch } from '@/sanity/util';
+import { cachedFetch, sortGames } from '@/sanity/util';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import GameCard from '@/components/GameCard';
@@ -9,6 +9,7 @@ export default async function Home() {
   const games = await cachedFetch(gameQuery, {
     slug: null,
   });
+  const sortedGames = sortGames(games);
 
   return (
     <main className="flex flex-col lg:flex-row pt-6">
@@ -29,7 +30,7 @@ export default async function Home() {
         </section>
       </div>
       <aside className="w-full lg:max-w-[440px] h-auto lg:h-[1189px] overflow-none lg:overflow-y-auto lg:[scrollbar-width:none] lg:[&::-webkit-scrollbar]:hidden">
-        {games.map((game: any) => (
+        {sortedGames.map((game: any) => (
           <GameCard key={game._id} game={game} location="home" />
         ))}
       </aside>

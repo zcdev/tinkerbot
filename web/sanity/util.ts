@@ -14,3 +14,7 @@ export async function cachedFetch(
 
     return client.fetch(query, params);
 }
+
+export function sortGames<T extends { title: string; }>(games: T[]): T[] {
+    return [...games].sort((a, b) => a.title.localeCompare(b.title));
+}

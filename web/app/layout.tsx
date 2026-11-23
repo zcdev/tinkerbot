@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Orbitron } from "next/font/google";
 import "./globals.css";
 import { gameQuery } from '@/sanity/queries';
-import { cachedFetch } from '@/sanity/util';
+import { cachedFetch, sortGames } from '@/sanity/util';
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
@@ -25,6 +25,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   const games = await cachedFetch(gameQuery, {
     slug: null,
   });
+  const sortedGames = sortGames(games);
 
   return (
     <html
@@ -33,7 +34,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="sky-background min-h-full flex flex-col justify-center items-center p-6 lg:p-12 lg:pt-6">
         <div>
-          <Nav games={games} />
+          <Nav games={sortedGames} />
           {children}
           <Footer />
         </div>
