@@ -3,18 +3,12 @@ import { cachedFetch } from '@/sanity/util';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import PillList from '@/components/PillList';
-import PortableTextBlock from '@/components/PortableTextBlock';
+import PortableTextDisplay from '@/components/PortableTextDisplay';
 import CharacterCard from '@/components/CharacterCard';
 import GameplayHighlight from '@/components/GameplayHighlight';
 export const instant = false;
 
-type Props = {
-    params: Promise<{
-        slug: string;
-    }>;
-};
-
-export default async function Game({ params }: Props) {
+export default async function Game({ params }: { params: Promise<{ slug: string; }>; }) {
     const { slug } = await params;
     const games = await cachedFetch(gameQuery, { slug });
     const game = games.find((game: any) => game.slug === slug);
@@ -40,7 +34,7 @@ export default async function Game({ params }: Props) {
                                 <p className="text-xl mt-4 mb-6">
                                     {game.tagline}
                                 </p>
-                                <PortableTextBlock value={game.story} />
+                                <PortableTextDisplay value={game.story} />
                             </section>
                         </section>
                     </section>
